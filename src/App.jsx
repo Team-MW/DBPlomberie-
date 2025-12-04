@@ -1,7 +1,38 @@
 import React, { useEffect, useState } from "react";
 
+const testimonials = [
+  {
+    quote:
+      "DB Plomberie a refait toute notre salle de bain en respectant délais et budget, avec un résultat digne d’un hôtel.",
+    name: "Sophie & Karim",
+    role: "Rénovation complète à Courbevoie",
+  },
+  {
+    quote:
+      "Intervention express un dimanche soir pour une fuite, photos avant/après et devis ultra clair. On se sent vraiment accompagnés.",
+    name: "Hôtel Horizon",
+    role: "Maintenance plomberie 24/7",
+  },
+  {
+    quote:
+      "Suivi digital, rapports de consommation et planning prévisionnel : nos copropriétaires ont enfin de la visibilité.",
+    name: "Syndic Val de Seine",
+    role: "Contrat de maintenance copropriété",
+  },
+];
+
 function App() {
   const [navOpen, setNavOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState("services");
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [stats, setStats] = useState({
+    interventions: 0,
+    rating: 0,
+    years: 0,
+  });
+  const [statsAnimated, setStatsAnimated] = useState(false);
   const [formValues, setFormValues] = useState({
     name: "",
     phone: "",
@@ -17,6 +48,121 @@ function App() {
       document.body.classList.remove("nav-open");
     };
   }, [navOpen]);
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("[data-section]");
+    const onScroll = () => {
+      let current = "services";
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 120 && rect.bottom > 120) {
+          current = section.getAttribute("data-section") || "services";
+        }
+      });
+      setActiveSection(current);
+    };
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const items = document.querySelectorAll("[data-reveal]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.18 }
+    );
+
+    items.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setActiveTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 7000);
+    return () => window.clearInterval(id);
+  }, []);
+
+  useEffect(() => {
+    if (statsAnimated) return;
+    const statsNode = document.querySelector(".hero_stats");
+    if (!statsNode) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !statsAnimated) {
+            const duration = 1500;
+            const start = performance.now();
+            const from = { interventions: 0, rating: 0, years: 0 };
+            const to = { interventions: 1200, rating: 4.9, years: 15 };
+
+            const step = (time) => {
+              const progress = Math.min(1, (time - start) / duration);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              setStats({
+                interventions: from.interventions + (to.interventions - from.interventions) * eased,
+                rating: from.rating + (to.rating - from.rating) * eased,
+                years: from.years + (to.years - from.years) * eased,
+              });
+              if (progress < 1) {
+                window.requestAnimationFrame(step);
+              } else {
+                setStats(to);
+              }
+            };
+
+            window.requestAnimationFrame(step);
+            setStatsAnimated(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(statsNode);
+    return () => observer.disconnect();
+  }, [statsAnimated]);
+
+  useEffect(() => {
+    let ticking = false;
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const maxScroll =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const ratio = maxScroll > 0 ? scrollY / maxScroll : 0;
+        setScrollProgress(Math.min(1, Math.max(0, ratio)));
+        ticking = false;
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleHeroMouseMove = (event) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    setTilt({ x, y });
+  };
+
+  const handleHeroMouseLeave = () => {
+    setTilt({ x: 0, y: 0 });
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -46,23 +192,55 @@ function App() {
 
   return (
     <div className="page-shell">
+      <div className="scroll_bar" aria-hidden="true">
+        <div
+          className="scroll_bar_fill"
+          style={{ transform: `scaleX(${scrollProgress})` }}
+        />
+      </div>
       <header className="hero">
-        <div className="hero_background" />
-        <div className="hero_overlay" />
-        <div className="hero_inner">
+        <div
+          className="hero_background"
+          style={{
+            transform: `translateY(${scrollProgress * 40}px) scale(1.05)`,
+          }}
+        />
+        <div
+          className="hero_overlay"
+          style={{
+            transform: `translateY(${scrollProgress * 20}px)`,
+          }}
+        />
+        <div
+          className="hero_inner"
+          onMouseMove={handleHeroMouseMove}
+          onMouseLeave={handleHeroMouseLeave}
+        >
           <div className="site-header">
             <div className="logo">
               <span className="logo_mark">DB</span>
               <span className="logo_text">Plomberie</span>
             </div>
             <nav className={`nav ${navOpen ? "is-open" : ""}`}>
-              <a href="#services" onClick={() => setNavOpen(false)}>
+              <a
+                href="#services"
+                onClick={() => setNavOpen(false)}
+                className={activeSection === "services" ? "nav-active" : ""}
+              >
                 Services
               </a>
-              <a href="#engagements" onClick={() => setNavOpen(false)}>
+              <a
+                href="#engagements"
+                onClick={() => setNavOpen(false)}
+                className={activeSection === "engagements" ? "nav-active" : ""}
+              >
                 Engagements
               </a>
-              <a href="#devis" onClick={() => setNavOpen(false)}>
+              <a
+                href="#devis"
+                onClick={() => setNavOpen(false)}
+                className={activeSection === "devis" ? "nav-active" : ""}
+              >
                 Contact
               </a>
               <a
@@ -93,7 +271,15 @@ function App() {
           </div>
 
           <div className="hero_content">
-            <div className="hero_copy">
+            <div
+              className="hero_copy reveal"
+              data-reveal
+              style={{
+                transform: `translate3d(${tilt.x * -14}px, ${
+                  tilt.y * -10
+                }px, 0)`,
+              }}
+            >
               <p className="eyebrow">Urgence, rénovation &amp; entretien</p>
               <h1>
                 DB Plomberie,
@@ -118,53 +304,36 @@ function App() {
               </div>
               <div className="hero_stats">
                 <div>
-                  <span className="stat_value">+1 200</span>
+                  <span className="stat_value">
+                    +{Math.round(stats.interventions).toLocaleString("fr-FR")}
+                  </span>
                   <span className="stat_label">Interventions réussies</span>
                 </div>
                 <div>
-                  <span className="stat_value">4,9/5</span>
+                  <span className="stat_value">
+                    {stats.rating.toFixed(1).replace(".", ",")}/5
+                  </span>
                   <span className="stat_label">Avis clients vérifiés</span>
                 </div>
                 <div>
-                  <span className="stat_value">15 ans</span>
+                  <span className="stat_value">
+                    {Math.round(stats.years)} ans
+                  </span>
                   <span className="stat_label">Savoir-faire professionnel</span>
                 </div>
               </div>
-            </div>
-            <div className="hero_card">
-              <p className="hero_card_title">Disponibilité en temps réel</p>
-              <ul>
-                <li>
-                  <span>⏱</span>
-                  <div>
-                    <strong>Interventions urgentes</strong>
-                    <p>Secteurs Paris &amp; 92 couverts aujourd&apos;hui.</p>
-                  </div>
-                </li>
-                <li>
-                  <span>🛁</span>
-                  <div>
-                    <strong>Projets salles de bain</strong>
-                    <p>
-                      Créneaux visites techniques ouverts de 8h à 20h.
-                    </p>
-                  </div>
-                </li>
-                <li>
-                  <span>💧</span>
-                  <div>
-                    <strong>Maintenance bâtiments</strong>
-                    <p>Contrats pros personnalisés sous 48h.</p>
-                  </div>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
       </header>
 
       <main>
-        <section id="services" className="section services">
+        <section
+          id="services"
+          className="section services reveal"
+          data-section="services"
+          data-reveal
+        >
           <div className="section_header">
             <p className="eyebrow">Nos expertises</p>
             <h2>Des solutions de plomberie pensées pour durer.</h2>
@@ -214,7 +383,12 @@ function App() {
           </div>
         </section>
 
-        <section id="engagements" className="section commitments">
+        <section
+          id="engagements"
+          className="section commitments reveal"
+          data-section="engagements"
+          data-reveal
+        >
           <div className="section_header">
             <p className="eyebrow">Pourquoi DB Plomberie</p>
             <h2>Engagements transparents, résultats mesurables.</h2>
@@ -241,7 +415,12 @@ function App() {
           </div>
         </section>
 
-        <section id="devis" className="section quote">
+        <section
+          id="devis"
+          className="section quote reveal"
+          data-section="devis"
+          data-reveal
+        >
           <div className="quote_wrapper">
             <div className="quote_content">
               <p className="eyebrow">Faire un devis</p>
@@ -251,6 +430,11 @@ function App() {
                 minutes. Les visites techniques sont gratuites et sans
                 engagement.
               </p>
+              <div className="quote_badge_row">
+                <span className="quote_badge">Devis gratuit</span>
+                <span className="quote_badge">Retour &lt; 30 min</span>
+                <span className="quote_badge">Île-de-France</span>
+              </div>
               <ul className="quote_bullets">
                 <li>Réponse garantie sous 30 min</li>
                 <li>Suivi personnalisé par SMS ou WhatsApp</li>
@@ -327,26 +511,100 @@ function App() {
             </form>
           </div>
         </section>
+
+        <section className="section testimonials reveal" data-reveal>
+          <div className="section_header">
+            <p className="eyebrow">Ils travaillent avec nous</p>
+            <h2>Une expérience client pensée comme un service hôtelier.</h2>
+            <p>
+              Du premier appel au suivi post-intervention, chaque étape est
+              structurée pour inspirer confiance : transparence, ponctualité et
+              communication continue.
+            </p>
+          </div>
+          <div className="testimonials_inner">
+            <div>
+              <p className="testimonial_quote">
+                “{testimonials[activeTestimonial].quote}”
+              </p>
+              <div className="testimonial_meta">
+                <strong>{testimonials[activeTestimonial].name}</strong>
+                <br />
+                <span>{testimonials[activeTestimonial].role}</span>
+              </div>
+              <div className="pill-row">
+                <span className="pill">4,9/5 moyenne avis</span>
+                <span className="pill">+1200 interventions</span>
+                <span className="pill">Île-de-France</span>
+              </div>
+            </div>
+            <div className="testimonial_slider">
+              <div className="testimonial_bubbles">
+                <div className="testimonial_bubble">
+                  <strong>Avant</strong>
+                  <br />
+                  Appels d&apos;urgence non priorisés, peu de visibilité pour
+                  les clients, devis flous.
+                </div>
+                <div className="testimonial_bubble">
+                  <strong>Avec DB Plomberie</strong>
+                  <br />
+                  File d&apos;attente digitale, créneaux clairs, reporting
+                  client systématique après chaque intervention.
+                </div>
+              </div>
+              <div className="testimonial_dots" aria-hidden="true">
+                {testimonials.map((_, index) => (
+                  <span
+                    // index utilisé seulement pour l’affichage, liste figée
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={index}
+                    className={
+                      index === activeTestimonial
+                        ? "testimonial_dot is-active"
+                        : "testimonial_dot"
+                    }
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer className="footer">
-        <div>
-          <div className="logo">
-            <span className="logo_mark">DB</span>
-            <span className="logo_text">Plomberie</span>
+        <div className="footer_top">
+          <div>
+            <div className="logo">
+              <span className="logo_mark">DB</span>
+              <span className="logo_text">Plomberie</span>
+            </div>
+            <p>13 rue des Artisans, 92400 Courbevoie</p>
           </div>
-          <p>13 rue des Artisans, 92400 Courbevoie</p>
+          <div className="footer_links">
+            <a href="tel:+33700000000">07 00 00 00 00</a>
+            <a href="mailto:contact@dbplomberie.fr">contact@dbplomberie.fr</a>
+            <a href="#devis" className="button ghost">
+              Planifier un rappel
+            </a>
+          </div>
         </div>
-        <div className="footer_links">
-          <a href="tel:+33700000000">07 00 00 00 00</a>
-          <a href="mailto:contact@dbplomberie.fr">contact@dbplomberie.fr</a>
-          <a href="#devis" className="button ghost">
-            Planifier un rappel
-          </a>
+        <div className="footer_bottom">
+          <p className="small muted">
+            © 2025 DB Plomberie. Tous droits réservés.
+          </p>
+          <p className="small">
+            Site codé par{" "}
+            <a
+              href="https://microdidact.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="footer_credit"
+            >
+              Microdidact
+            </a>
+          </p>
         </div>
-        <p className="small muted">
-          © 2025 DB Plomberie. Tous droits réservés.
-        </p>
       </footer>
     </div>
   );
