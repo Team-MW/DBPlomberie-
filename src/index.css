@@ -937,6 +937,75 @@ main {
   align-items: start;
 }
 
+.quote_wrapper_centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quote_content_centered {
+  max-width: 800px;
+  text-align: center;
+  padding: 3rem;
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.quote_content_centered::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-xl);
+  padding: 1.5px;
+  background: var(--accent-gradient);
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.quote_content_centered h2 {
+  margin-top: 0.5rem;
+}
+
+.quote_content_centered .quote_badge_row {
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.quote_content_centered .quote_bullets {
+  max-width: 500px;
+  margin: 2rem auto;
+  text-align: left;
+}
+
+.quote_cta_row {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.quote_cta_row .button {
+  animation: fadeInUp 0.6s ease-out 0.4s both;
+}
+
+.quote_cta_row .button:first-child {
+  animation-delay: 0.5s;
+}
+
+.quote_cta_row .button:last-child {
+  animation-delay: 0.6s;
+}
+
 .quote_content p {
   color: var(--muted);
 }
@@ -2136,6 +2205,88 @@ main {
 
   .card {
     padding: 2rem;
+  }
+
+  .quote_content_centered {
+    padding: 2rem 1.5rem;
+  }
+
+  .quote_cta_row {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .quote_cta_row .button {
+    width: 100%;
+  }
+}
+
+/* ======================
+   Contact Page Styles
+   ====================== */
+
+.contact_section {
+  padding: 4rem 0 6rem;
+  position: relative;
+}
+
+.contact_inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.jotform_wrapper {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+  position: relative;
+  overflow: hidden;
+}
+
+.jotform_wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent-gradient);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+/* Jotform styling overrides */
+.jotform_wrapper iframe {
+  width: 100% !important;
+  border: none !important;
+  min-height: 600px;
+}
+
+.jotform_wrapper form {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Hover effect */
+.jotform_wrapper:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 768px) {
+  .contact_section {
+    padding: 3rem 0 4rem;
+  }
+
+  .jotform_wrapper {
+    padding: 1.5rem;
+  }
+
+  .jotform_wrapper iframe {
+    min-height: 500px;
   }
 }
 
