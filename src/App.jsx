@@ -240,11 +240,21 @@ function App() {
                 <span className="logo_mark">DB</span>
                 <span className="logo_text">Plomberie</span>
               </div>
-              <nav className="nav">
-                <a href="/">Accueil</a>
-                <a href="/faq">FAQ</a>
-                <a href="/mentions-legales">Mentions légales</a>
+              <nav className={`nav ${navOpen ? "is-open" : ""}`}>
+                <a href="/" onClick={() => setNavOpen(false)}>Accueil</a>
+                <a href="/faq" onClick={() => setNavOpen(false)}>FAQ</a>
+                <a href="/mentions-legales" onClick={() => setNavOpen(false)}>Mentions légales</a>
               </nav>
+              <button
+                className="nav_mobile_toggle"
+                aria-label="Menu"
+                aria-expanded={navOpen}
+                onClick={() => setNavOpen((prev) => !prev)}
+                type="button"
+              >
+                <span />
+                <span />
+              </button>
             </div>
             <div className="legal_hero">
               <span className="eyebrow">
@@ -392,9 +402,21 @@ function App() {
                 <span className="logo_mark">DB</span>
                 <span className="logo_text">Plomberie</span>
               </div>
-              <nav className="nav">
-                <a href="/">Retour au site</a>
+              <nav className={`nav ${navOpen ? "is-open" : ""}`}>
+                <a href="/" onClick={() => setNavOpen(false)}>Accueil</a>
+                <a href="/contact" onClick={() => setNavOpen(false)}>Contact</a>
+                <a href="/mentions-legales" onClick={() => setNavOpen(false)}>Mentions légales</a>
               </nav>
+              <button
+                className="nav_mobile_toggle"
+                aria-label="Menu"
+                aria-expanded={navOpen}
+                onClick={() => setNavOpen((prev) => !prev)}
+                type="button"
+              >
+                <span />
+                <span />
+              </button>
             </div>
             <div className="legal_hero">
               <span className="eyebrow">
@@ -659,9 +681,21 @@ function App() {
                 <span className="logo_mark">DB</span>
                 <span className="logo_text">Plomberie</span>
               </div>
-              <nav className="nav">
-                <a href="/">Retour au site</a>
+              <nav className={`nav ${navOpen ? "is-open" : ""}`}>
+                <a href="/" onClick={() => setNavOpen(false)}>Accueil</a>
+                <a href="/contact" onClick={() => setNavOpen(false)}>Contact</a>
+                <a href="/faq" onClick={() => setNavOpen(false)}>FAQ</a>
               </nav>
+              <button
+                className="nav_mobile_toggle"
+                aria-label="Menu"
+                aria-expanded={navOpen}
+                onClick={() => setNavOpen((prev) => !prev)}
+                type="button"
+              >
+                <span />
+                <span />
+              </button>
             </div>
             <div className="legal_hero">
               <span className="eyebrow">
@@ -872,6 +906,13 @@ function App() {
 
   return (
     <div className="page-shell">
+      {navOpen && (
+        <div 
+          className="nav_overlay" 
+          onClick={() => setNavOpen(false)}
+          aria-hidden="true"
+        />
+      )}
       <div className="scroll_bar" aria-hidden="true">
         <div
           className="scroll_bar_fill"
