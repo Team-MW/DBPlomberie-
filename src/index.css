@@ -1017,6 +1017,9 @@ main {
   -webkit-mask: 
     linear-gradient(#fff 0 0) content-box, 
     linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0.3;
@@ -2359,7 +2362,8 @@ main {
   padding: 0 1.5rem;
 }
 
-.jotform_wrapper {
+.jotform_wrapper,
+.tally_wrapper {
   background: var(--surface);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
@@ -2370,7 +2374,8 @@ main {
   overflow: hidden;
 }
 
-.jotform_wrapper::before {
+.jotform_wrapper::before,
+.tally_wrapper::before {
   content: "";
   position: absolute;
   top: 0;
@@ -2381,8 +2386,9 @@ main {
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
-/* Jotform styling overrides */
-.jotform_wrapper iframe {
+/* Jotform/Tally styling overrides */
+.jotform_wrapper iframe,
+.tally_wrapper iframe {
   width: 100% !important;
   border: none !important;
   min-height: 600px;
@@ -2393,7 +2399,8 @@ main {
 }
 
 /* Hover effect */
-.jotform_wrapper:hover {
+.jotform_wrapper:hover,
+.tally_wrapper:hover {
   box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2404,11 +2411,13 @@ main {
     padding: 3rem 0 4rem;
   }
 
-  .jotform_wrapper {
+  .jotform_wrapper,
+  .tally_wrapper {
     padding: 1.5rem;
   }
 
-  .jotform_wrapper iframe {
+  .jotform_wrapper iframe,
+  .tally_wrapper iframe {
     min-height: 500px;
   }
 }

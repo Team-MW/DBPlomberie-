@@ -207,31 +207,37 @@ function App() {
     setTilt({ x: 0, y: 0 });
   };
 
-  // Load Jotform script for contact page
-  useEffect(() => {
-    if (isContactPage) {
-      const script = document.createElement('script');
-      script.src = 'https://form.jotform.com/jsform/253384764001353';
-      script.type = 'text/javascript';
-      script.async = true;
-      
-      const formContainer = document.getElementById('jotform-container');
-      if (formContainer) {
-        formContainer.appendChild(script);
-      }
-      
-      return () => {
-        // Cleanup script on unmount
-        if (formContainer && formContainer.contains(script)) {
-          formContainer.removeChild(script);
-        }
-      };
-    }
-  }, [isContactPage]);
+  // No longer needed - using Tally iframe instead
+  // useEffect(() => {
+  //   if (isContactPage) {
+  //     const script = document.createElement('script');
+  //     script.src = 'https://form.jotform.com/jsform/253384764001353';
+  //     script.type = 'text/javascript';
+  //     script.async = true;
+  //     
+  //     const formContainer = document.getElementById('jotform-container');
+  //     if (formContainer) {
+  //       formContainer.appendChild(script);
+  //     }
+  //     
+  //     return () => {
+  //       if (formContainer && formContainer.contains(script)) {
+  //         formContainer.removeChild(script);
+  //       }
+  //     };
+  //   }
+  // }, [isContactPage]);
 
   if (isContactPage) {
     return (
       <div className="page-shell">
+        {navOpen && (
+          <div 
+            className="nav_overlay" 
+            onClick={() => setNavOpen(false)}
+            aria-hidden="true"
+          />
+        )}
         <header className="hero legal_hero_header">
           <div className="hero_overlay" />
           <div className="hero_inner">
@@ -282,7 +288,18 @@ function App() {
                 </p>
               </div>
               
-              <div id="jotform-container" className="jotform_wrapper"></div>
+              <div className="tally_wrapper">
+                <iframe 
+                  src="https://tally.so/r/RGxzbQ?transparentBackground=1"
+                  width="100%"
+                  height="500"
+                  frameBorder="0"
+                  marginHeight="0"
+                  marginWidth="0"
+                  title="Formulaire de contact"
+                  style={{ border: 'none' }}
+                ></iframe>
+              </div>
             </div>
           </section>
         </main>
@@ -394,6 +411,13 @@ function App() {
   if (isFaqPage) {
     return (
       <div className="page-shell">
+        {navOpen && (
+          <div 
+            className="nav_overlay" 
+            onClick={() => setNavOpen(false)}
+            aria-hidden="true"
+          />
+        )}
         <header className="hero legal_hero_header">
           <div className="hero_overlay" />
           <div className="hero_inner">
@@ -673,6 +697,13 @@ function App() {
   if (isLegalPage) {
     return (
       <div className="page-shell">
+        {navOpen && (
+          <div 
+            className="nav_overlay" 
+            onClick={() => setNavOpen(false)}
+            aria-hidden="true"
+          />
+        )}
         <header className="hero legal_hero_header">
           <div className="hero_overlay" />
           <div className="hero_inner">
