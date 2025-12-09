@@ -10,6 +10,7 @@ const Home = lazy(() => import('./pages/Home'))
 const Services = lazy(() => import('./pages/Services'))
 const Portfolio = lazy(() => import('./pages/Portfolio'))
 const Contact = lazy(() => import('./pages/Contact'))
+const MentionsLegales = lazy(() => import('./pages/MentionsLegales'))
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/services" element={<PageTransition><Services /></PageTransition>} />
             <Route path="/portfolio" element={<PageTransition><Portfolio /></PageTransition>} />
             <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+            <Route path="/mentions-legales" element={<PageTransition><MentionsLegales /></PageTransition>} />
           </Routes>
         </Suspense>
       </main>

@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async'
 
 const SEO = ({ 
   title = 'Accueil', 
-  description = 'DB Plomberie, votre plombier de confiance à Toulouse et sa région. Intervention rapide, dépannage d\'urgence 24/7, installation sanitaire, rénovation salle de bain. Devis gratuit.',
+  description = 'DB Plomberie, votre plombier de confiance à Toulouse et alentours. Intervention rapide, installation sanitaire, rénovation salle de bain. Devis gratuit.',
   keywords = 'plombier Toulouse, plomberie Toulouse, dépannage plomberie Toulouse, urgence plombier Toulouse, installation sanitaire Toulouse, rénovation salle de bain Toulouse, fuite d\'eau Toulouse, débouchage Toulouse, plombier 31, DB Plomberie',
   image = '/og-image.jpg',
   url = 'https://dbplomberie.fr',

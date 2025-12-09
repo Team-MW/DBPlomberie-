@@ -42,7 +42,7 @@ const Home = () => {
     <>
       <SEO 
         title="Accueil"
-        description="DB Plomberie, votre plombier expert à Toulouse et sa région. Dépannage d'urgence 24/7, installation sanitaire, rénovation salle de bain et cuisine. Intervention rapide, devis gratuit. Plus de 15 ans d'expérience."
+        description="DB Plomberie, votre plombier expert à Toulouse et alentours. Installation sanitaire, rénovation salle de bain et cuisine. Intervention rapide, devis gratuit. Du lundi au samedi de 9h à 19h."
         keywords="plombier Toulouse, plomberie Toulouse, dépannage plomberie urgence Toulouse, installation sanitaire Toulouse, rénovation salle de bain Toulouse, plombier 31, fuite d'eau Toulouse, débouchage Toulouse, DB Plomberie"
         url="https://dbplomberie.fr/"
       />
@@ -76,7 +76,7 @@ const Home = () => {
                 Votre Expert en <span className="text-primary">Plomberie</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 mb-8">
-                Service professionnel depuis 1995. Intervention rapide 24h/24 et 7j/7 pour tous vos besoins en plomberie.
+                Intervention rapide à Toulouse et alentours. Service de qualité disponible du lundi au samedi de 9h à 19h.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
@@ -86,10 +86,10 @@ const Home = () => {
                   Demander un devis gratuit
                 </Link>
                 <a
-                  href="tel:+33123456789"
+                  href="tel:+33652085070"
                   className="bg-white text-primary border-2 border-primary px-8 py-4 rounded-lg hover:bg-primary hover:text-white transition-all hover:scale-105 shadow-xl text-center text-lg font-semibold"
                 >
-                  Appeler maintenant
+                  06 52 08 50 70
                 </a>
               </div>
             </motion.div>

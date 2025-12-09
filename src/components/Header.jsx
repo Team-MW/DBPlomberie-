@@ -37,9 +37,9 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-white text-xl font-bold">P</span>
+              <span className="text-white text-xl font-bold">DB</span>
             </div>
-            <span className="text-xl font-bold text-gray-800">Plomberie Pro</span>
+            <span className="text-xl font-bold text-gray-800">DB Plomberie</span>
           </Link>
 
           {/* Desktop Menu */}
@@ -61,10 +61,13 @@ const Header = () => {
               </Link>
             ))}
             <a
-              href="tel:+33123456789"
-              className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              href="tel:+33652085070"
+              className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
             >
-              Appelez-nous
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <span>06 52 08 50 70</span>
             </a>
           </div>
 
@@ -124,11 +127,22 @@ const Header = () => {
                     {item.label}
                   </Link>
                 ))}
-                <a
-                  href="tel:+33123456789"
-                  className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors text-center"
+                <Link
+                  to="/mentions-legales"
+                  className={`text-lg text-gray-700 hover:text-primary transition-colors ${
+                    location.pathname === '/mentions-legales' ? 'text-primary font-semibold' : ''
+                  }`}
                 >
-                  Appelez-nous
+                  Mentions légales
+                </Link>
+                <a
+                  href="tel:+33652085070"
+                  className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors text-center flex items-center justify-center space-x-2"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  <span>06 52 08 50 70</span>
                 </a>
               </div>
             </motion.div>
