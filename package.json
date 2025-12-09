@@ -1,12 +1,16 @@
 {
-  "name": "plomberie-site",
+  "name": "db-plomberie",
   "private": true,
   "version": "1.0.0",
+  "description": "Site web professionnel de DB Plomberie - Expert en plomberie à Toulouse",
+  "author": "Microdidact (https://microdidact.com/)",
+  "license": "UNLICENSED",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
     "react": "^18.2.0",

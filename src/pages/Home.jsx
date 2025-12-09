@@ -42,8 +42,9 @@ const Home = () => {
     <>
       <SEO 
         title="Accueil"
-        description="Expert en plomberie depuis 1995. Dépannage rapide, installation et rénovation. Service 7j/7."
-        keywords="plomberie, plombier, dépannage, installation, rénovation, urgence"
+        description="DB Plomberie, votre plombier expert à Toulouse et sa région. Dépannage d'urgence 24/7, installation sanitaire, rénovation salle de bain et cuisine. Intervention rapide, devis gratuit. Plus de 15 ans d'expérience."
+        keywords="plombier Toulouse, plomberie Toulouse, dépannage plomberie urgence Toulouse, installation sanitaire Toulouse, rénovation salle de bain Toulouse, plombier 31, fuite d'eau Toulouse, débouchage Toulouse, DB Plomberie"
+        url="https://dbplomberie.fr/"
       />
 
       {/* Hero Section - Fond avec image */}

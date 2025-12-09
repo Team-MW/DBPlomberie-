@@ -81,9 +81,10 @@ const Services = () => {
   return (
     <>
       <SEO 
-        title="Nos Services"
-        description="Découvrez tous nos services de plomberie : dépannage d'urgence, installation, rénovation, détection de fuites et entretien."
-        keywords="services plomberie, dépannage plombier, installation sanitaire, rénovation salle de bain"
+        title="Nos Services de Plomberie"
+        description="Services de plomberie à Toulouse : dépannage d'urgence 24/7, installation sanitaire complète, rénovation salle de bain et cuisine, détection de fuites, débouchage. DB Plomberie, experts qualifiés. Devis gratuit."
+        keywords="services plomberie Toulouse, dépannage urgence Toulouse, installation sanitaire Toulouse, rénovation salle de bain Toulouse, détection fuite Toulouse, débouchage Toulouse, entretien plomberie Toulouse, plombier professionnel Toulouse"
+        url="https://dbplomberie.fr/services"
       />
 
       {/* Hero Section */}

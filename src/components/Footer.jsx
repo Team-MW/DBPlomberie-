@@ -88,6 +88,17 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
           <p>&copy; {new Date().getFullYear()} Plomberie Pro. Tous droits réservés.</p>
+          <p className="mt-2">
+            Codé par{' '}
+            <a 
+              href="https://microdidact.com/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-primary hover:text-primary-dark transition-colors font-medium"
+            >
+              Microdidact
+            </a>
+          </p>
         </div>
       </div>
     </footer>

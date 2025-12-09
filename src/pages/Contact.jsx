@@ -31,9 +31,10 @@ const Contact = () => {
   return (
     <>
       <SEO 
-        title="Contact"
-        description="Contactez Plomberie Pro pour un devis gratuit ou une intervention d'urgence. Disponible 24h/24 et 7j/7."
-        keywords="contact plombier, devis plomberie, urgence plomberie, plombier paris"
+        title="Contact - Devis Gratuit"
+        description="Contactez DB Plomberie à Toulouse pour un devis gratuit ou une intervention d'urgence. Disponible 24h/24 et 7j/7. Réponse rapide garantie. Téléphone, email ou formulaire en ligne."
+        keywords="contact plombier Toulouse, devis plomberie gratuit Toulouse, urgence plombier Toulouse 24/7, rendez-vous plombier Toulouse, intervention rapide Toulouse, demande devis plomberie Toulouse"
+        url="https://dbplomberie.fr/contact"
       />
 
       {/* Hero Section */}

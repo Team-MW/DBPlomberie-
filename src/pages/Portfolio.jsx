@@ -113,9 +113,10 @@ const Portfolio = () => {
   return (
     <>
       <SEO 
-        title="Portfolio"
-        description="Découvrez nos réalisations en plomberie : rénovations de salles de bain, installations, dépannages et plus encore."
-        keywords="portfolio plomberie, réalisations plombier, projets plomberie, avant après"
+        title="Portfolio - Nos Réalisations"
+        description="Découvrez les réalisations de DB Plomberie à Toulouse : rénovations de salles de bain modernes, installations sanitaires de qualité, cuisines équipées. Plus de 500 projets réussis depuis 2008."
+        keywords="portfolio plomberie Toulouse, réalisations plombier Toulouse, rénovation salle de bain Toulouse exemples, projets plomberie Toulouse, avant après plomberie, travaux plomberie Toulouse photos"
+        url="https://dbplomberie.fr/portfolio"
       />
 
       {/* Hero Section */}
