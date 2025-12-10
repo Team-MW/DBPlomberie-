@@ -1,32 +1,8 @@
 import { motion } from 'framer-motion'
-import { useState } from 'react'
 import SEO from '../components/SEO'
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: '',
-  })
-  const [submitted, setSubmitted] = useState(false)
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    // Logique d'envoi du formulaire
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
-    setFormData({ name: '', email: '', phone: '', service: '', message: '' })
-    setTimeout(() => setSubmitted(false), 5000)
-  }
+  
 
   return (
     <>
@@ -115,109 +91,19 @@ const Contact = () => {
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 Demander un devis gratuit
               </h2>
-              
-              {submitted && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg mb-6"
-                >
-                  ✓ Merci ! Nous vous recontacterons rapidement.
-                </motion.div>
-              )}
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">
-                    Nom complet *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="Jean Dupont"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="jean.dupont@email.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="block text-gray-700 font-semibold mb-2">
-                    Téléphone *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="01 23 45 67 89"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="service" className="block text-gray-700 font-semibold mb-2">
-                    Type de service
-                  </label>
-                  <select
-                    id="service"
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                  >
-                    <option value="">Sélectionnez un service</option>
-                    <option value="urgence">Dépannage d'urgence</option>
-                    <option value="installation">Installation</option>
-                    <option value="renovation">Rénovation</option>
-                    <option value="entretien">Entretien</option>
-                    <option value="autre">Autre</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-gray-700 font-semibold mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows="5"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="Décrivez votre besoin..."
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-primary text-white py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors"
-                >
-                  Envoyer ma demande
-                </button>
-              </form>
+              <div className="space-y-6">
+                <iframe
+                  src="https://tally.so/r/RGxzbQ?transparentBackground=1&dynamicHeight=1&hideTitle=1"
+                  title="Formulaire Tally"
+                  width="100%"
+                  height="700"
+                  style={{ border: 'none' }}
+                  frameBorder="0"
+                  marginHeight="0"
+                  marginWidth="0"
+                  loading="lazy"
+                />
+              </div>
             </motion.div>
 
             {/* Info Section */}
