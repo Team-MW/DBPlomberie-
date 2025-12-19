@@ -80,7 +80,7 @@ const Services = () => {
 
   return (
     <>
-      <SEO 
+      <SEO
         title="Nos Services de Plomberie"
         description="Services de plomberie à Toulouse : dépannage d'urgence 24/7, installation sanitaire complète, rénovation salle de bain et cuisine, détection de fuites, débouchage. DB Plomberie, experts qualifiés. Devis gratuit."
         keywords="services plomberie Toulouse, dépannage urgence Toulouse, installation sanitaire Toulouse, rénovation salle de bain Toulouse, détection fuite Toulouse, débouchage Toulouse, entretien plomberie Toulouse, plombier professionnel Toulouse"
@@ -100,7 +100,7 @@ const Services = () => {
                 Nos Services de Plomberie
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Des solutions professionnelles pour tous vos besoins en plomberie, 
+                Des solutions professionnelles pour tous vos besoins en plomberie,
                 de l'urgence à la rénovation complète
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -125,8 +125,8 @@ const Services = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <img 
-                  src="/Plumber repairing pipe burst.jpg" 
+                <img
+                  src="/Plumber repairing pipe burst.jpg"
                   alt="Services de plomberie professionnels"
                   className="w-full h-auto object-cover"
                   loading="eager"
@@ -154,7 +154,7 @@ const Services = () => {
                 <div className="text-6xl mb-4">{service.icon}</div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">{service.title}</h3>
                 <p className="text-gray-600 mb-6">{service.description}</p>
-                
+
                 <ul className="space-y-2 mb-6">
                   {service.features.map((feature, i) => (
                     <li key={i} className="flex items-center text-gray-700">
@@ -178,7 +178,7 @@ const Services = () => {
         {/* Effets de fond */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -192,7 +192,7 @@ const Services = () => {
               viewport={{ once: true }}
               className="inline-block mb-4"
             >
-              <span className="bg-primary/20 text-primary px-6 py-2 rounded-full text-sm font-semibold uppercase tracking-wider border border-primary/30">
+              <span className="bg-primary/20 text-white px-6 py-2 rounded-full text-sm font-semibold uppercase tracking-wider border border-primary/30">
                 Notre Processus
               </span>
             </motion.div>
@@ -205,7 +205,7 @@ const Services = () => {
           <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto relative">
             {/* Ligne de connexion entre les étapes */}
             <div className="hidden md:block absolute top-12 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-primary via-cyan-500 to-primary"></div>
-            
+
             {[
               { step: '1', title: 'Contact', description: 'Appelez-nous ou remplissez le formulaire', icon: '📞' },
               { step: '2', title: 'Diagnostic', description: 'Évaluation du problème et devis gratuit', icon: '🔍' },
@@ -233,7 +233,7 @@ const Services = () => {
                       {item.step}
                     </div>
                   </div>
-                  
+
                   <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
                     {item.title}
                   </h3>
@@ -243,7 +243,7 @@ const Services = () => {
 
                   {/* Barre de progression au bottom */}
                   <div className="mt-6 h-1 bg-white/10 rounded-full overflow-hidden">
-                    <motion.div 
+                    <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: '100%' }}
                       viewport={{ once: true }}

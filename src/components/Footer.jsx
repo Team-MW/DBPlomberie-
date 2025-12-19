@@ -9,10 +9,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-white text-xl font-bold">DB</span>
-              </div>
-              <span className="text-xl font-bold">DB Plomberie</span>
+              <img src="/DBplomberi.png" alt="DB Plomberie" className="h-12 w-auto" />
             </div>
             <p className="text-gray-400 mb-4">
               Votre expert en plomberie à Toulouse et alentours. Service rapide, qualité garantie.
@@ -102,9 +99,9 @@ const Footer = () => {
           </div>
           <p className="mt-2">
             Codé par{' '}
-            <a 
-              href="https://microdidact.com/" 
-              target="_blank" 
+            <a
+              href="https://microdidact.com/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-primary hover:text-primary-dark transition-colors font-medium"
             >

@@ -28,12 +28,12 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-lg py-3' : 'bg-white/95 py-4'
-      }`}
+      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg py-3' : 'bg-white/95 py-4'
+        }`}
     >
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between">
+          {/* Logo */}
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
@@ -48,15 +48,13 @@ const Header = () => {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-gray-700 hover:text-primary transition-colors relative group ${
-                  location.pathname === item.path ? 'text-primary font-semibold' : ''
-                }`}
+                className={`text-gray-700 hover:text-primary transition-colors relative group ${location.pathname === item.path ? 'text-primary font-semibold' : ''
+                  }`}
               >
                 {item.label}
                 <span
-                  className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary transform transition-transform ${
-                    location.pathname === item.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                  }`}
+                  className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary transform transition-transform ${location.pathname === item.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                    }`}
                 />
               </Link>
             ))}
@@ -120,18 +118,16 @@ const Header = () => {
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`text-lg text-gray-700 hover:text-primary transition-colors ${
-                      location.pathname === item.path ? 'text-primary font-semibold' : ''
-                    }`}
+                    className={`text-lg text-gray-700 hover:text-primary transition-colors ${location.pathname === item.path ? 'text-primary font-semibold' : ''
+                      }`}
                   >
                     {item.label}
                   </Link>
                 ))}
                 <Link
                   to="/mentions-legales"
-                  className={`text-lg text-gray-700 hover:text-primary transition-colors ${
-                    location.pathname === '/mentions-legales' ? 'text-primary font-semibold' : ''
-                  }`}
+                  className={`text-lg text-gray-700 hover:text-primary transition-colors ${location.pathname === '/mentions-legales' ? 'text-primary font-semibold' : ''
+                    }`}
                 >
                   Mentions légales
                 </Link>

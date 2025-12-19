@@ -40,7 +40,7 @@ const Home = () => {
 
   return (
     <>
-      <SEO 
+      <SEO
         title="Accueil"
         description="DB Plomberie, votre plombier expert à Toulouse et alentours. Installation sanitaire, rénovation salle de bain et cuisine. Intervention rapide, devis gratuit. Du lundi au samedi de 9h à 19h."
         keywords="plombier Toulouse, plomberie Toulouse, dépannage plomberie urgence Toulouse, installation sanitaire Toulouse, rénovation salle de bain Toulouse, plombier 31, fuite d'eau Toulouse, débouchage Toulouse, DB Plomberie"
@@ -48,14 +48,14 @@ const Home = () => {
       />
 
       {/* Hero Section - Fond avec image */}
-      <section 
+      <section
         ref={(el) => (sectionRefs.current[0] = el)}
         className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden"
       >
         {/* Image de fond */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/2104.i402.007.F.m004.c9.Plumber flat background.jpg" 
+          <img
+            src="/2104.i402.007.F.m004.c9.Plumber flat background.jpg"
             alt="Expert plombier professionnel au travail"
             className="w-full h-full object-cover"
             loading="eager"
@@ -73,7 +73,7 @@ const Home = () => {
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
-                Votre Expert en <span className="text-primary">Plomberie</span>
+                Votre Expert en <span className="bg-gradient-to-r from-primary to-cyan-500 bg-clip-text text-transparent">Plomberie</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 mb-8">
                 Intervention rapide à Toulouse et alentours. Service de qualité disponible du lundi au samedi de 9h à 19h.
@@ -81,13 +81,13 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/contact"
-                  className="bg-primary text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-all hover:scale-105 shadow-xl text-center text-lg font-semibold"
+                  className="bg-gradient-to-r from-primary to-cyan-500 text-white px-8 py-4 rounded-xl hover:shadow-2xl hover:shadow-primary/30 transition-all hover:scale-105 text-center text-lg font-semibold"
                 >
                   Demander un devis gratuit
                 </Link>
                 <a
                   href="tel:+33652085070"
-                  className="bg-white text-primary border-2 border-primary px-8 py-4 rounded-lg hover:bg-primary hover:text-white transition-all hover:scale-105 shadow-xl text-center text-lg font-semibold"
+                  className="bg-white/80 backdrop-blur text-primary border-2 border-primary px-8 py-4 rounded-xl hover:bg-primary hover:text-white transition-all hover:scale-105 shadow-xl text-center text-lg font-semibold"
                 >
                   06 52 08 50 70
                 </a>
@@ -98,14 +98,14 @@ const Home = () => {
       </section>
 
       {/* Services Section - Design moderne */}
-      <section 
+      <section
         ref={(el) => (sectionRefs.current[1] = el)}
         className="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white relative overflow-hidden"
       >
         {/* Effets de fond décoratifs */}
         <div className="absolute top-0 left-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -120,7 +120,7 @@ const Home = () => {
               viewport={{ once: true }}
               className="inline-block mb-4"
             >
-              <span className="bg-primary/20 text-primary px-6 py-2 rounded-full text-sm font-semibold uppercase tracking-wider border border-primary/30">
+              <span className="bg-primary/20 text-white px-6 py-2 rounded-full text-sm font-semibold uppercase tracking-wider border border-primary/30">
                 Nos Services
               </span>
             </motion.div>
@@ -145,13 +145,13 @@ const Home = () => {
                 <div className="relative bg-white/5 backdrop-blur-lg p-8 rounded-2xl border border-white/10 hover:border-primary/50 transition-all duration-300 h-full">
                   {/* Gradient hover overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-cyan-500/0 group-hover:from-primary/10 group-hover:to-cyan-500/10 rounded-2xl transition-all duration-300"></div>
-                  
+
                   <div className="relative z-10">
                     {/* Icône avec fond */}
                     <div className="w-20 h-20 bg-gradient-to-br from-primary to-cyan-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
                       <span className="text-4xl">{service.icon}</span>
                     </div>
-                    
+
                     <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
                       {service.title}
                     </h3>
@@ -193,7 +193,7 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us - Fond clair */}
-      <section 
+      <section
         ref={(el) => (sectionRefs.current[2] = el)}
         className="py-20 bg-gradient-to-br from-cyan-50 to-blue-50"
       >
@@ -251,8 +251,8 @@ const Home = () => {
               className="order-1 lg:order-2"
             >
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <img 
-                  src="/Plumber repairing pipe burst.jpg" 
+                <img
+                  src="/Plumber repairing pipe burst.jpg"
                   alt="Plombier professionnel réparant une fuite d'eau"
                   className="w-full h-auto object-cover"
                   loading="lazy"
@@ -265,7 +265,7 @@ const Home = () => {
       </section>
 
       {/* Testimonials Section - Fond sombre */}
-      <section 
+      <section
         ref={(el) => (sectionRefs.current[3] = el)}
         className="py-20 bg-gradient-to-br from-gray-800 to-gray-900 text-white"
       >
@@ -288,7 +288,7 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="bg-gray-700/50 backdrop-blur p-8 rounded-xl"
+                className="bg-gray-700/50 backdrop-blur p-8 rounded-xl border border-white/10 hover:shadow-2xl transition-all"
               >
                 <div className="flex mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
@@ -304,7 +304,7 @@ const Home = () => {
       </section>
 
       {/* Contact CTA - Fond clair */}
-      <section 
+      <section
         ref={(el) => (sectionRefs.current[4] = el)}
         className="py-20 bg-gradient-to-br from-blue-50 to-cyan-100"
       >
@@ -324,15 +324,15 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
-                className="bg-primary text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-colors text-lg font-semibold"
+                className="bg-gradient-to-r from-primary to-cyan-500 text-white px-8 py-4 rounded-xl hover:shadow-2xl hover:shadow-primary/30 transition-all text-lg font-semibold"
               >
                 Demander un devis
               </Link>
               <a
-                href="tel:+33123456789"
-                className="bg-secondary text-white px-8 py-4 rounded-lg hover:bg-cyan-600 transition-colors text-lg font-semibold"
+                href="tel:+33652085070"
+                className="bg-secondary text-white px-8 py-4 rounded-xl hover:bg-cyan-600 transition-colors text-lg font-semibold"
               >
-                📞 01 23 45 67 89
+                📞 06 52 08 50 70
               </a>
             </div>
           </motion.div>
