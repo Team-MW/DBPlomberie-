@@ -35,11 +35,12 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-white text-xl font-bold">DB</span>
-            </div>
-            <span className="text-xl font-bold text-gray-800">DB Plomberie</span>
+          <Link to="/" className="flex items-center">
+            <img
+              src="/logoDBblanc.png"
+              alt="DB Plomberie"
+              className="h-16 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Menu */}

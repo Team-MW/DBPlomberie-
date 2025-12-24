@@ -138,34 +138,25 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                className="group relative"
               >
-                {/* Carte avec effet glassmorphism */}
-                <div className="relative bg-white/5 backdrop-blur-lg p-8 rounded-2xl border border-white/10 hover:border-primary/50 transition-all duration-300 h-full">
-                  {/* Gradient hover overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/0 to-cyan-500/0 group-hover:from-primary/10 group-hover:to-cyan-500/10 rounded-2xl transition-all duration-300"></div>
+                <div className="bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300 h-full flex flex-col group">
+                  <div className="mb-6 inline-flex items-center justify-center w-16 h-16 rounded-xl bg-white/10 group-hover:bg-white/20 transition-all duration-300">
+                    <span className="text-3xl text-white">{service.icon}</span>
+                  </div>
 
-                  <div className="relative z-10">
-                    {/* Icône avec fond */}
-                    <div className="w-20 h-20 bg-gradient-to-br from-primary to-cyan-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
-                      <span className="text-4xl">{service.icon}</span>
-                    </div>
+                  <h3 className="text-xl font-bold mb-4 text-white">
+                    {service.title}
+                  </h3>
 
-                    <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-300 group-hover:text-gray-100 transition-colors">
-                      {service.description}
-                    </p>
+                  <p className="text-gray-100/80 leading-relaxed mb-8 flex-grow">
+                    {service.description}
+                  </p>
 
-                    {/* Flèche animée */}
-                    <div className="mt-4 flex items-center text-primary opacity-0 group-hover:opacity-100 transition-all duration-300">
-                      <span className="text-sm font-semibold mr-2">En savoir plus</span>
-                      <svg className="w-4 h-4 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
+                  <div className="flex items-center text-white font-medium group-hover:translate-x-2 transition-transform duration-300">
+                    <span>En savoir plus</span>
+                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
                   </div>
                 </div>
               </motion.div>
@@ -264,20 +255,26 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials Section - Fond sombre */}
+      {/* Testimonials Section - Design Light & Premium */}
       <section
         ref={(el) => (sectionRefs.current[3] = el)}
-        className="py-20 bg-gradient-to-br from-gray-800 to-gray-900 text-white"
+        className="py-24 bg-gradient-to-br from-cyan-50/50 to-blue-50/50 relative overflow-hidden"
       >
-        <div className="container mx-auto px-4">
+        {/* Background Decorative Blobs */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-primary/5 to-cyan-500/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-blue-600/5 to-purple-500/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"></div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Ce que disent nos clients</h2>
-            <p className="text-xl text-gray-300">Plus de 5000 clients satisfaits</p>
+            <span className="text-primary font-bold tracking-wider uppercase text-sm mb-4 block">Avis Clients</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Ils nous font confiance</h2>
+            <div className="w-24 h-1.5 bg-gradient-to-r from-primary to-cyan-400 mx-auto rounded-full"></div>
+            <p className="text-xl text-gray-600 mt-6 max-w-2xl mx-auto">Découvrez pourquoi plus de <span className="text-primary font-bold">5000 clients</span> recommandent nos services à Toulouse.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -287,16 +284,42 @@ const Home = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="bg-gray-700/50 backdrop-blur p-8 rounded-xl border border-white/10 hover:shadow-2xl transition-all"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -10 }}
+                className="relative group"
               >
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i} className="text-yellow-400 text-2xl">★</span>
-                  ))}
+                <div className="h-full bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 flex flex-col">
+                  {/* Quote Icon */}
+                  <div className="absolute top-6 right-8 text-6xl text-primary/10 font-serif leading-none group-hover:text-primary/20 transition-colors">"</div>
+
+                  {/* Stars */}
+                  <div className="flex mb-6 space-x-1">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <svg key={i} className="w-5 h-5 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+
+                  <p className="text-lg text-gray-700 italic mb-8 flex-grow leading-relaxed relative z-10">
+                    "{testimonial.text}"
+                  </p>
+
+                  <div className="flex items-center mt-auto border-t border-gray-100 pt-6">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-cyan-500 shadow-lg flex items-center justify-center text-white font-bold text-xl mr-4 transform group-hover:scale-110 transition-transform duration-300">
+                      {testimonial.name.charAt(0)}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900 text-lg">{testimonial.name}</h4>
+                      <div className="flex items-center text-sm text-primary font-medium">
+                        <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Client vérifié
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-lg mb-4 italic">"{testimonial.text}"</p>
-                <p className="font-semibold text-primary">- {testimonial.name}</p>
               </motion.div>
             ))}
           </div>
