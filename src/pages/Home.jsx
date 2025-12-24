@@ -55,13 +55,13 @@ const Home = () => {
         {/* Image de fond */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/2104.i402.007.F.m004.c9.Plumber flat background.jpg"
+            src="/plumbing-professional-doing-his-job.jpg"
             alt="Expert plombier professionnel au travail"
             className="w-full h-full object-cover"
             loading="eager"
           />
           {/* Overlay pour améliorer la lisibilité du texte */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-blue-50/85 to-cyan-50/90"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-white/70 via-blue-50/60 to-cyan-50/70"></div>
         </div>
 
         {/* Contenu */}
