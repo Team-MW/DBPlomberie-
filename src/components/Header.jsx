@@ -35,7 +35,11 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link
+            to="/"
+            className="flex items-center"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
+          >
             <img
               src="/logoDBblanc.png"
               alt="DB Plomberie"
