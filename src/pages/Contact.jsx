@@ -2,11 +2,11 @@ import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 
 const Contact = () => {
-  
+
 
   return (
     <>
-      <SEO 
+      <SEO
         title="Contact - Devis Gratuit"
         description="Contactez DB Plomberie à Toulouse pour un devis gratuit ou une intervention d'urgence. Disponible 24h/24 et 7j/7. Réponse rapide garantie. Téléphone, email ou formulaire en ligne."
         keywords="contact plombier Toulouse, devis plomberie gratuit Toulouse, urgence plombier Toulouse 24/7, rendez-vous plombier Toulouse, intervention rapide Toulouse, demande devis plomberie Toulouse"
@@ -25,7 +25,7 @@ const Contact = () => {
               Contactez-nous
             </h1>
             <p className="text-xl text-gray-600">
-              Une question ? Un projet ? Une urgence ? 
+              Une question ? Un projet ? Une urgence ?
               Notre équipe est à votre écoute 24h/24 et 7j/7
             </p>
           </motion.div>
@@ -54,9 +54,9 @@ const Contact = () => {
               {
                 icon: '📍',
                 title: 'Adresse',
-                content: '9 rue Caulet',
-                link: 'https://maps.google.com/?q=9+rue+Caulet+31300+Toulouse',
-                description: '31300 Toulouse',
+                content: 'Toulouse et alentours',
+                link: 'https://maps.google.com/?q=Toulouse',
+                description: 'Haute-Garonne',
               },
             ].map((item, index) => (
               <motion.a
@@ -115,8 +115,8 @@ const Contact = () => {
             >
               {/* Image Section */}
               <div className="relative rounded-2xl overflow-hidden shadow-lg h-64">
-                <img 
-                  src="/2104.i402.007.F.m004.c9.Plumber flat background.jpg" 
+                <img
+                  src="/2104.i402.007.F.m004.c9.Plumber flat background.jpg"
                   alt="Zone d'intervention Toulouse et alentours"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -148,8 +148,8 @@ const Contact = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                     <div>
-                      <p className="font-semibold text-gray-900 mb-1">Adresse</p>
-                      <p className="text-gray-600">9 rue Caulet<br />31300 Toulouse</p>
+                      <p className="font-semibold text-gray-900 mb-1">Zone d'intervention</p>
+                      <p className="text-gray-600">Toulouse et alentours</p>
                     </div>
                   </div>
                 </div>
@@ -215,7 +215,7 @@ const Contact = () => {
               },
               {
                 q: 'Quelle est votre zone d\'intervention ?',
-                a: 'Nous intervenons sur Toulouse et alentours (rayon de 30 km). Notre adresse : 9 rue Caulet, 31300 Toulouse. N\'hésitez pas à nous contacter pour vérifier si nous couvrons votre secteur.',
+                a: 'Nous intervenons sur Toulouse et alentours (rayon de 30 km). N\'hésitez pas à nous contacter pour vérifier si nous couvrons votre secteur.',
               },
               {
                 q: 'Quels moyens de paiement acceptez-vous ?',

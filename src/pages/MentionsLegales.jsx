@@ -4,7 +4,7 @@ import SEO from '../components/SEO'
 const MentionsLegales = () => {
   return (
     <>
-      <SEO 
+      <SEO
         title="Mentions Légales"
         description="Mentions légales de DB Plomberie - Informations sur l'entreprise, hébergeur et conditions d'utilisation du site."
         keywords="mentions légales, DB Plomberie, conditions utilisation, RGPD"
@@ -49,7 +49,7 @@ const MentionsLegales = () => {
               <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-primary">
                 <p className="mb-3"><strong className="text-gray-900">Raison sociale :</strong> <span className="text-gray-700">DB Plomberie</span></p>
                 <p className="mb-3"><strong className="text-gray-900">Gérant :</strong> <span className="text-gray-700">Djivan Bruno</span></p>
-                <p className="mb-3"><strong className="text-gray-900">Adresse :</strong> <span className="text-gray-700">9 rue Caulet, 31300 Toulouse</span></p>
+                <p className="mb-3"><strong className="text-gray-900">Adresse :</strong> <span className="text-gray-700">Toulouse et alentours</span></p>
                 <p className="mb-3"><strong className="text-gray-900">Téléphone :</strong> <a href="tel:+33652085070" className="text-primary hover:text-primary-dark transition-colors">06 52 08 50 70</a></p>
                 <p className="mb-3"><strong className="text-gray-900">Email :</strong> <a href="mailto:Dbplomberie31@gmail.com" className="text-primary hover:text-primary-dark transition-colors">Dbplomberie31@gmail.com</a></p>
                 <p className="mb-0"><strong className="text-gray-900">Horaires :</strong> <span className="text-gray-700">Du lundi au samedi de 9h à 19h</span></p>
@@ -93,9 +93,9 @@ const MentionsLegales = () => {
               </h2>
               <p className="text-gray-700">
                 Le site a été conçu et développé par{' '}
-                <a 
-                  href="https://microdidact.com/" 
-                  target="_blank" 
+                <a
+                  href="https://microdidact.com/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary hover:text-primary-dark font-semibold transition-colors"
                 >
@@ -129,7 +129,7 @@ const MentionsLegales = () => {
                 </svg>
                 Protection des données personnelles (RGPD)
               </h2>
-              
+
               <h3 className="text-xl font-semibold text-gray-900 mt-6 mb-3">Collecte des données</h3>
               <p className="text-gray-700 mb-4">
                 DB Plomberie collecte des données personnelles uniquement dans le cadre de demandes de devis, de contact ou de demandes d'intervention. Les données collectées sont :
@@ -175,7 +175,7 @@ const MentionsLegales = () => {
                 <a href="mailto:Dbplomberie31@gmail.com" className="text-primary hover:text-primary-dark font-semibold">
                   Dbplomberie31@gmail.com
                 </a>
-                {' '}ou par courrier à l'adresse : 9 rue Caulet, 31300 Toulouse.
+                {' '}ou par courrier à l'adresse : Toulouse et alentours.
               </p>
             </div>
 
@@ -255,8 +255,8 @@ const MentionsLegales = () => {
               <p className="mb-6 text-blue-100">
                 Notre équipe est à votre disposition pour répondre à toutes vos questions.
               </p>
-              <a 
-                href="/contact" 
+              <a
+                href="/contact"
                 className="inline-block bg-white text-primary px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
               >
                 Nous contacter
