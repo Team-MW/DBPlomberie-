@@ -1,8 +1,41 @@
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 
 const Contact = () => {
 
+
+  useEffect(() => {
+    const handleIFrameMessage = (e) => {
+      if (typeof e.data === 'object') return;
+      const args = e.data.split(":");
+      if (args.length > 2) {
+        const iframe = document.getElementById("JotFormIFrame-" + args[(args.length - 1)]);
+        if (!iframe) return;
+        switch (args[0]) {
+          case "scrollIntoView":
+            iframe.scrollIntoView();
+            break;
+          case "setHeight":
+            iframe.style.height = args[1] + "px";
+            break;
+          case "collapseErrorPage":
+            if (iframe.clientHeight > window.innerHeight) {
+              iframe.style.height = window.innerHeight + "px";
+            }
+            break;
+          case "reloadPage":
+            window.location.reload();
+            break;
+        }
+      }
+    };
+
+    window.addEventListener("message", handleIFrameMessage, false);
+    return () => {
+      window.removeEventListener("message", handleIFrameMessage, false);
+    };
+  }, []);
 
   return (
     <>
@@ -93,14 +126,13 @@ const Contact = () => {
               </h2>
               <div className="space-y-6">
                 <iframe
-                  src="https://tally.so/r/jaZB2J?transparentBackground=1&dynamicHeight=1&hideTitle=1"
-                  title="Formulaire Tally"
-                  width="100%"
-                  height="700"
-                  style={{ border: 'none' }}
+                  id="JotFormIFrame-260532857861363"
+                  title="Formulaire de contact"
+                  allow="geolocation; microphone; camera; fullscreen"
+                  src="https://form.jotform.com/260532857861363?isIframeEmbed=1"
                   frameBorder="0"
-                  marginHeight="0"
-                  marginWidth="0"
+                  style={{ minWidth: '100%', height: '700px', border: 'none' }}
+                  scrolling="no"
                   loading="lazy"
                 />
               </div>
