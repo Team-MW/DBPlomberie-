@@ -80,8 +80,8 @@ const Contact = () => {
               {
                 icon: '📧',
                 title: 'Email',
-                content: 'Dbplomberie31@gmail.com',
-                link: 'mailto:Dbplomberie31@gmail.com',
+                content: 'db.plomberie31@gmail.com',
+                link: 'mailto:db.plomberie31@gmail.com',
                 description: 'Réponse sous 24h',
               },
               {
