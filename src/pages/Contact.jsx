@@ -75,13 +75,13 @@ const Contact = () => {
                 title: 'Téléphone',
                 content: '06 52 08 50 70',
                 link: 'tel:+33652085070',
-                description: 'Lun-Sam : 9h-19h',
+                description: '7 j / 7',
               },
               {
                 icon: '📧',
                 title: 'Email',
-                content: 'db.plomberie31@gmail.com',
-                link: 'mailto:db.plomberie31@gmail.com',
+                content: 'Db.plomberie31@gmail.com',
+                link: 'mailto:Db.plomberie31@gmail.com',
                 description: 'Réponse sous 24h',
               },
               {
@@ -165,12 +165,8 @@ const Contact = () => {
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Horaires</h3>
                 <div className="space-y-3">
                   <div className="flex justify-between items-center py-2 border-b">
-                    <span className="font-semibold text-gray-700">Lundi - Samedi</span>
+                    <span className="font-semibold text-gray-700">7 j / 7</span>
                     <span className="text-primary font-bold">9h00 - 19h00</span>
-                  </div>
-                  <div className="flex justify-between items-center py-2">
-                    <span className="font-semibold text-gray-700">Dimanche</span>
-                    <span className="text-gray-600">Fermé</span>
                   </div>
                 </div>
                 <div className="mt-6 pt-6 border-t">
@@ -239,7 +235,7 @@ const Contact = () => {
             {[
               {
                 q: 'Quels sont vos horaires d\'intervention ?',
-                a: 'Nous intervenons du lundi au samedi de 9h à 19h sur Toulouse et alentours. Nous nous engageons à répondre rapidement à toutes vos demandes.',
+                a: 'Nous intervenons 7 j / 7 sur Toulouse et alentours. Nous nous engageons à répondre rapidement à toutes vos demandes.',
               },
               {
                 q: 'Le devis est-il gratuit ?',

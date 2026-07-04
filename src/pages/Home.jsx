@@ -42,7 +42,7 @@ const Home = () => {
     <>
       <SEO
         title="Accueil"
-        description="DB Plomberie, votre plombier expert à Toulouse et alentours. Installation sanitaire, rénovation salle de bain et cuisine. Intervention rapide, devis gratuit. Du lundi au samedi de 9h à 19h."
+        description="DB Plomberie, votre plombier expert à Toulouse et alentours. Installation sanitaire, rénovation salle de bain et cuisine. Intervention rapide, devis gratuit. 7 j / 7."
         keywords="plombier Toulouse, plomberie Toulouse, dépannage plomberie urgence Toulouse, installation sanitaire Toulouse, rénovation salle de bain Toulouse, plombier 31, fuite d'eau Toulouse, débouchage Toulouse, DB Plomberie"
         url="https://dbplomberie.fr/"
       />
@@ -76,7 +76,7 @@ const Home = () => {
                 Votre Expert en <span className="bg-gradient-to-r from-primary to-cyan-500 bg-clip-text text-transparent">Plomberie</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 mb-8">
-                Intervention rapide à Toulouse et alentours. Service de qualité disponible du lundi au samedi de 9h à 19h.
+                Intervention rapide à Toulouse et alentours. Service de qualité disponible 7 j / 7.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link

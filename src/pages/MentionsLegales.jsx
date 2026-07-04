@@ -51,8 +51,8 @@ const MentionsLegales = () => {
                 <p className="mb-3"><strong className="text-gray-900">Gérant :</strong> <span className="text-gray-700">Djivan Bruno</span></p>
                 <p className="mb-3"><strong className="text-gray-900">Adresse :</strong> <span className="text-gray-700">Toulouse et alentours</span></p>
                 <p className="mb-3"><strong className="text-gray-900">Téléphone :</strong> <a href="tel:+33652085070" className="text-primary hover:text-primary-dark transition-colors">06 52 08 50 70</a></p>
-                <p className="mb-3"><strong className="text-gray-900">Email :</strong> <a href="mailto:db.plomberie31@gmail.com" className="text-primary hover:text-primary-dark transition-colors">db.plomberie31@gmail.com</a></p>
-                <p className="mb-0"><strong className="text-gray-900">Horaires :</strong> <span className="text-gray-700">Du lundi au samedi de 9h à 19h</span></p>
+                <p className="mb-3"><strong className="text-gray-900">Email :</strong> <a href="mailto:Db.plomberie31@gmail.com" className="text-primary hover:text-primary-dark transition-colors">Db.plomberie31@gmail.com</a></p>
+                <p className="mb-0"><strong className="text-gray-900">Horaires :</strong> <span className="text-gray-700">7 j / 7</span></p>
               </div>
             </div>
 
@@ -172,8 +172,8 @@ const MentionsLegales = () => {
               </ul>
               <p className="text-gray-700">
                 Pour exercer ces droits, vous pouvez nous contacter par email à{' '}
-                <a href="mailto:db.plomberie31@gmail.com" className="text-primary hover:text-primary-dark font-semibold">
-                  db.plomberie31@gmail.com
+                <a href="mailto:Db.plomberie31@gmail.com" className="text-primary hover:text-primary-dark font-semibold">
+                  Db.plomberie31@gmail.com
                 </a>
                 {' '}ou par courrier à l'adresse : Toulouse et alentours.
               </p>
