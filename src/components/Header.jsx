@@ -1,6 +1,17 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import Icon from './Icon'
+
+const menuItems = [
+  { path: '/', label: 'Accueil', icon: 'home' },
+  { path: '/services', label: 'Services', icon: 'cog' },
+  { path: '/portfolio', label: 'Portfolio', icon: 'star' },
+  { path: '/contact', label: 'Contact', icon: 'mail' },
+]
+
+const PHONE_HREF = 'tel:+33652085070'
+const PHONE_LABEL = '06 52 08 50 70'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -8,97 +19,98 @@ const Header = () => {
   const location = useLocation()
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    const onScroll = () => setScrolled(window.scrollY > 8)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Ferme le menu à chaque changement de page
   useEffect(() => {
     setIsOpen(false)
-  }, [location])
+  }, [location.pathname])
 
-  const menuItems = [
-    { path: '/', label: 'Accueil' },
-    { path: '/services', label: 'Services' },
-    { path: '/portfolio', label: 'Portfolio' },
-    { path: '/contact', label: 'Contact' },
-  ]
+  // Bloque le scroll de la page + fermeture avec Échap quand le menu est ouvert
+  useEffect(() => {
+    if (!isOpen) return
+    const previous = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    const onKey = (e) => e.key === 'Escape' && setIsOpen(false)
+    window.addEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = previous
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [isOpen])
 
   return (
     <header
-      className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg py-3' : 'bg-white/95 py-4'
-        }`}
+      className={`fixed top-0 inset-x-0 z-50 bg-white border-b transition-shadow duration-300 ${
+        scrolled ? 'border-gray-200 shadow-md' : 'border-transparent'
+      }`}
     >
-      <nav className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          {/* Logo */}
-          <Link
-            to="/"
-            className="flex items-center"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'instant' })}
-          >
-            <img
-              src="/logoDBblanc.png"
-              alt="DB Plomberie"
-              className="h-16 w-auto object-contain"
-            />
-          </Link>
+      <nav className="container mx-auto px-4 h-16 md:h-20 flex items-center justify-between" aria-label="Navigation principale">
+        {/* Logo */}
+        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center flex-shrink-0" aria-label="DB Plomberie, accueil">
+          <img src="/logoDBblanc.png" alt="DB Plomberie" className="h-11 md:h-14 w-auto object-contain" />
+        </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+        {/* Menu desktop */}
+        <div className="hidden md:flex items-center gap-8">
+          <ul className="flex items-center gap-8">
             {menuItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`text-gray-700 hover:text-primary transition-colors relative group ${location.pathname === item.path ? 'text-primary font-semibold' : ''
-                  }`}
-              >
-                {item.label}
-                <span
-                  className={`absolute bottom-0 left-0 w-full h-0.5 bg-primary transform transition-transform ${location.pathname === item.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                    }`}
-                />
-              </Link>
+              <li key={item.path}>
+                <NavLink
+                  to={item.path}
+                  end
+                  className={({ isActive }) =>
+                    `relative py-2 font-medium transition-colors after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:w-full after:bg-primary after:origin-left after:transition-transform ${
+                      isActive
+                        ? 'text-primary after:scale-x-100'
+                        : 'text-gray-700 hover:text-primary after:scale-x-0 hover:after:scale-x-100'
+                    }`
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              </li>
             ))}
-            <a
-              href="tel:+33652085070"
-              className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              <span>06 52 08 50 70</span>
-            </a>
-          </div>
-
-          {/* Burger Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden relative w-10 h-10 flex items-center justify-center focus:outline-none"
-            aria-label="Menu"
+          </ul>
+          <a
+            href={PHONE_HREF}
+            className="inline-flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
           >
-            <div className="w-6 h-5 flex flex-col justify-between">
-              <motion.span
-                animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-                className="w-full h-0.5 bg-gray-800 transform origin-center transition-all"
-              />
-              <motion.span
-                animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-                className="w-full h-0.5 bg-gray-800"
-              />
-              <motion.span
-                animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-                className="w-full h-0.5 bg-gray-800 transform origin-center transition-all"
-              />
-            </div>
+            <Icon name="phone" className="w-5 h-5" />
+            {PHONE_LABEL}
+          </a>
+        </div>
+
+        {/* Mobile : appel direct + burger */}
+        <div className="md:hidden flex items-center gap-2">
+          <a
+            href={PHONE_HREF}
+            aria-label={`Appeler le ${PHONE_LABEL}`}
+            className="w-11 h-11 rounded-lg bg-primary text-white flex items-center justify-center active:bg-blue-800"
+          >
+            <Icon name="phone" className="w-5 h-5" />
+          </a>
+          <button
+            onClick={() => setIsOpen(true)}
+            className="w-11 h-11 rounded-lg border border-gray-200 text-gray-800 flex items-center justify-center active:bg-gray-100"
+            aria-label="Ouvrir le menu"
+            aria-expanded={isOpen}
+            aria-controls="menu-mobile"
+          >
+            <span className="flex flex-col gap-[5px]">
+              <span className="block w-5 h-0.5 bg-current rounded" />
+              <span className="block w-5 h-0.5 bg-current rounded" />
+              <span className="block w-5 h-0.5 bg-current rounded" />
+            </span>
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Menu mobile : panneau latéral */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -106,47 +118,75 @@ const Header = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/50 md:hidden"
-              style={{ top: scrolled ? '60px' : '72px' }}
+              className="fixed inset-0 z-[55] bg-slate-900/60 md:hidden"
+              aria-hidden="true"
             />
-            <motion.div
+            <motion.aside
+              id="menu-mobile"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Menu"
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed right-0 top-0 h-full w-64 bg-white shadow-xl md:hidden"
-              style={{ top: scrolled ? '60px' : '72px' }}
+              transition={{ type: 'tween', duration: 0.25 }}
+              className="fixed top-0 right-0 z-[60] h-full w-[85%] max-w-sm bg-white shadow-2xl md:hidden flex flex-col"
             >
-              <div className="flex flex-col p-6 space-y-6">
-                {menuItems.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`text-lg text-gray-700 hover:text-primary transition-colors ${location.pathname === item.path ? 'text-primary font-semibold' : ''
-                      }`}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-                <Link
-                  to="/mentions-legales"
-                  className={`text-lg text-gray-700 hover:text-primary transition-colors ${location.pathname === '/mentions-legales' ? 'text-primary font-semibold' : ''
-                    }`}
+              <div className="h-16 px-4 flex items-center justify-between border-b border-gray-200 flex-shrink-0">
+                <span className="text-sm font-semibold uppercase tracking-widest text-gray-500">Menu</span>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="w-11 h-11 rounded-lg border border-gray-200 text-gray-800 flex items-center justify-center active:bg-gray-100"
+                  aria-label="Fermer le menu"
                 >
-                  Mentions légales
-                </Link>
-                <a
-                  href="tel:+33652085070"
-                  className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors text-center flex items-center justify-center space-x-2"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeWidth={2} d="M6 6l12 12M18 6L6 18" />
                   </svg>
-                  <span>06 52 08 50 70</span>
-                </a>
+                </button>
               </div>
-            </motion.div>
+
+              <ul className="flex-1 overflow-y-auto p-4 space-y-1">
+                {menuItems.map((item) => (
+                  <li key={item.path}>
+                    <NavLink
+                      to={item.path}
+                      end
+                      className={({ isActive }) =>
+                        `flex items-center gap-4 px-4 py-4 rounded-lg text-lg font-medium transition-colors ${
+                          isActive ? 'bg-primary/10 text-primary' : 'text-gray-800 active:bg-gray-100'
+                        }`
+                      }
+                    >
+                      <Icon name={item.icon} className="w-6 h-6" />
+                      {item.label}
+                    </NavLink>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="p-4 border-t border-gray-200 flex-shrink-0 space-y-4">
+                <a
+                  href={PHONE_HREF}
+                  className="flex items-center justify-center gap-2 bg-primary text-white py-4 rounded-lg font-semibold text-lg active:bg-blue-800"
+                >
+                  <Icon name="phone" className="w-5 h-5" />
+                  {PHONE_LABEL}
+                </a>
+                <Link
+                  to="/contact"
+                  className="block text-center border-2 border-primary text-primary py-3.5 rounded-lg font-semibold active:bg-primary/10"
+                >
+                  Demander un devis gratuit
+                </Link>
+                <p className="text-center text-sm text-gray-500">
+                  Toulouse et alentours · 7 j / 7
+                  <span className="mx-2">·</span>
+                  <Link to="/mentions-legales" className="underline">Mentions légales</Link>
+                </p>
+              </div>
+            </motion.aside>
           </>
         )}
       </AnimatePresence>
@@ -155,4 +195,3 @@ const Header = () => {
 }
 
 export default Header
-

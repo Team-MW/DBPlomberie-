@@ -1,17 +1,19 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
 const CTAButton = () => {
+  const { pathname } = useLocation()
+  if (pathname === '/contact') return null
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 1 }}
-      className="fixed bottom-8 right-8 z-40"
+      className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-40"
     >
       <Link
         to="/contact"
-        className="bg-secondary hover:bg-cyan-600 text-white px-6 py-4 rounded-full shadow-2xl flex items-center space-x-2 transition-all duration-300 hover:scale-105 group"
+        className="bg-secondary hover:bg-cyan-600 text-white px-5 py-3 md:px-6 md:py-4 rounded-full shadow-2xl flex items-center space-x-2 transition-all duration-300 hover:scale-105 group"
       >
         <span className="font-semibold">Demander un devis</span>
         <svg

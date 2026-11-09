@@ -9,7 +9,7 @@ const SEO = ({
   type = 'website'
 }) => {
   const fullTitle = title === 'Accueil' 
-    ? 'DB Plomberie - Plombier Expert à Toulouse | Dépannage 24/7'
+    ? 'DB Plomberie - Plombier Expert à Toulouse | Dépannage 7j/7'
     : `${title} | DB Plomberie - Plombier à Toulouse`
   
   return (

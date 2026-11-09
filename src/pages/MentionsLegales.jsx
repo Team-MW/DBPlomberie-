@@ -12,7 +12,7 @@ const MentionsLegales = () => {
       />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900">
+      <section className="pt-32 pb-20 bg-slate-900">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -250,7 +250,7 @@ const MentionsLegales = () => {
             </div>
 
             {/* Contact */}
-            <div className="mt-12 bg-gradient-to-r from-primary to-blue-600 p-8 rounded-xl text-white text-center">
+            <div className="mt-12 bg-primary p-8 rounded-xl text-white text-center">
               <h3 className="text-2xl font-bold mb-4">Une question sur nos mentions légales ?</h3>
               <p className="mb-6 text-blue-100">
                 Notre équipe est à votre disposition pour répondre à toutes vos questions.

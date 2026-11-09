@@ -1,0 +1,8 @@
+Photos d'ambiance du Portfolio (format JPG paysage, ~1600 px de large, < 300 Ko chacune).
+Noms exacts attendus :
+  bathroom.jpg      -> salle de bain (douche, vasque)
+  kitchen.jpg       -> cuisine (évier, robinet)
+  emergency.jpg     -> dépannage (robinet, canalisation, fuite)
+  installation.jpg  -> installation sanitaire (robinetterie, chauffe-eau)
+Sources libres sans attribution : unsplash.com, pexels.com (verifier "Licence gratuite").
+Tant qu'un fichier est absent, une icône s'affiche a la place.
